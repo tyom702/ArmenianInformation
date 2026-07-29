@@ -29,7 +29,7 @@ export function RevealCard({
   to,
   className,
 }: RevealCardProps) {
-  const { ref, isVisible } = useReveal<HTMLDivElement>();
+  const { ref, isVisible } = useReveal();
 
   return (
     <div
