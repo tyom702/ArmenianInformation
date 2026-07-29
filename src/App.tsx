@@ -17,6 +17,7 @@ const Cuisine = lazy(() => import('./pages/cuisine'));
 const About = lazy(() => import('./pages/about'));
 const Contact = lazy(() => import('./pages/contact'));
 const NotFound = lazy(() => import('./pages/not-found'));
+const DestinationDetail = lazy(() => import('./pages/destination-detail'));
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/regions" element={<Regions />} />
             <Route path="/destinations" element={<Destinations />} />
+            <Route path="/destinations/:slug" element={<DestinationDetail />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/history" element={<History />} />
             <Route path="/culture" element={<Culture />} />

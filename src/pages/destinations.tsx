@@ -62,7 +62,15 @@ export default function Destinations() {
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((dest) => (
-              <ImageCard key={dest.slug} image={dest.image} title={dest.name} subtitle={dest.category} description={dest.shortDesc} unesco={dest.unesco}>
+              <ImageCard
+                key={dest.slug}
+                image={dest.image}
+                title={dest.name}
+                subtitle={dest.category}
+                description={dest.shortDesc}
+                unesco={dest.unesco}
+                to={`/destinations/${dest.slug}`}
+              >
                 <div className="mt-4 flex flex-wrap gap-2 border-t border-border pt-4">
                   {dest.facts.map((fact, i) => (
                     <Badge key={i} variant="secondary" className="text-[10px]">

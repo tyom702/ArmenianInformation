@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { Reveal } from './reveal';
@@ -19,13 +20,9 @@ interface ImageCardProps {
   children?: ReactNode;
 }
 
-export function ImageCard({ image, title, subtitle, description, badge, unesco, textOnImage = false, className, onClick, children }: ImageCardProps) {
-  return (
-    <Reveal
-      variant="scale"
-      className={cn('group relative overflow-hidden rounded-xl border border-border bg-card shadow-soft card-hover', onClick && 'cursor-pointer', className)}
-      onClick={onClick}
-    >
+export function ImageCard({ image, title, subtitle, description, badge, unesco, textOnImage = false, className, to, onClick, children }: ImageCardProps) {
+  const content = (
+    <>
       <div className="relative overflow-hidden">
         <LazyImage
           src={image}
@@ -59,6 +56,24 @@ export function ImageCard({ image, title, subtitle, description, badge, unesco, 
           {children}
         </div>
       )}
+    </>
+  );
+
+  const classes = cn('group relative overflow-hidden rounded-xl border border-border bg-card shadow-soft card-hover', (onClick || to) && 'cursor-pointer', className);
+
+  if (to) {
+    return (
+      <Reveal variant="scale" className={classes}>
+        <Link to={to} className="block">
+          {content}
+        </Link>
+      </Reveal>
+    );
+  }
+
+  return (
+    <Reveal variant="scale" className={classes} onClick={onClick}>
+      {content}
     </Reveal>
   );
 }
